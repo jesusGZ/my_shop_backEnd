@@ -39,6 +39,8 @@
 		"nodemon": "^2.0.15",
 		"path": "^0.12.7",
 		"stripe": "^8.202.0",
-		"swagger-ui-express": "^4.3.0"
+		"swagger-ui-express": "^4.3.0",
+		"winston": "^3.6.0",
+		"winston-mongodb": "^5.0.7"
 	}
 }
