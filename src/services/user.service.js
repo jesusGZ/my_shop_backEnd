@@ -23,6 +23,13 @@ async function getUserById(id) {
 	if (data) data = data.toObject();
 	return data;
 }
+
+async function getUserByName(user_name) {
+	let data = await userModel.findOne({ userName: user_name });
+	if (data) data = data.toObject();
+	return data;
+}
+
 async function deleteUser(id) {
 	let data = await userModel.findByIdAndDelete(id);
 	if (data) data = data.toObject();
@@ -43,16 +50,9 @@ async function getStats(lastYear) {
 }
 
 async function updateUser(data) {
-	let result = await userModel.findByIdAndUpdate(
-		data.id,
-		{
-			$set: data,
-		},
-		{ new: true }
-	);
-
+	let result = await userModel.findByIdAndUpdate(data.id, { $set: data }, { new: true });
 	if (result) result = result.toObject();
 	return result;
 }
 
-module.exports = { insertUser, getUsers, getUserById, getStats, deleteUser, updateUser };
+module.exports = { insertUser, getUsers, getUserById, getStats, deleteUser, updateUser, getUserByName };
