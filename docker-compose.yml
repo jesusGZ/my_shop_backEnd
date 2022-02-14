@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+    mongodb_contenedor:
+        image: mongo
+        environment:
+            - MONGO_INITDB_DATABASE=myshop
+            - MONGO_INITDB_ROOT_USERNAME=user-example
+            - MONGO_INITDB_ROOT_PASSWORD=password
+        volumes:
+            - ./mongo-volume:/data/db
+        ports:
+            - 27017:27017
