@@ -1,8 +1,8 @@
 const user_controller = require('../controllers/user.controller');
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('../utils/auth');
-
+const MODULE = 'users';
 module.exports = (app) => {
-	app.put('/:id', verifyTokenAndAuthorization, async (req, res, next) => {
+	app.put(`${MODULE}/:id`, verifyTokenAndAuthorization, async (req, res, next) => {
 		try {
 			const data = req.body;
 
@@ -13,7 +13,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.delete('/:id', verifyTokenAndAuthorization, async (req, res, next) => {
+	app.delete(`${MODULE}/:id`, verifyTokenAndAuthorization, async (req, res, next) => {
 		try {
 			const id = req.params.id;
 
@@ -24,7 +24,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.get('/find/:id', verifyTokenAndAdmin, async (req, res, next) => {
+	app.get(`${MODULE}/find/:id`, verifyTokenAndAdmin, async (req, res, next) => {
 		try {
 			const id = req.params.id;
 
@@ -35,7 +35,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.get('/', verifyTokenAndAdmin, async (req, res, next) => {
+	app.get(`${MODULE}/`, verifyTokenAndAdmin, async (req, res, next) => {
 		try {
 			const query = req.query.new;
 
@@ -46,7 +46,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.get('/stats', verifyTokenAndAdmin, async (req, res, next) => {
+	app.get(`${MODULE}/stats`, verifyTokenAndAdmin, async (req, res, next) => {
 		try {
 			const result = await user_controller.getStats();
 			res.send(result);
@@ -55,7 +55,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.post('/register', async (req, res, next) => {
+	app.post(`${MODULE}/register`, async (req, res, next) => {
 		try {
 			const { username, email, password } = req.body;
 
@@ -66,7 +66,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.post('/login', async (req, res, next) => {
+	app.post(`${MODULE}/login`, async (req, res, next) => {
 		try {
 			const { username, password } = req.body;
 
