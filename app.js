@@ -20,7 +20,7 @@ DB.getConnection().catch((err) => {
 app.disable('x-powered-by');
 app.use(morgan('dev'));
 app.use(methods_http);
-//app.use(cors());
+app.use(cors());
 app.use(compression());
 app.use(express.json({ limit: '500kb', extended: true }));
 app.use(express.urlencoded({ limit: '500kb', extended: true }));
