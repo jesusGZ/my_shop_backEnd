@@ -1,5 +1,5 @@
-const order_controller = require('../controllers/order.controller');
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('../utils/auth');
+const order_controller = require('../controllers/order.controller');
 
 const MODULE = 'orders';
 
@@ -49,7 +49,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.get(`${MODULE}/`, verifyTokenAndAdmin, async (req, res, next) => {
+	app.get(`${MODULE}/`, verifyTokenAndAdmin, async (res, next) => {
 		try {
 			const result = await order_controller.getOrders();
 			res.send(result);
@@ -61,6 +61,7 @@ module.exports = (app) => {
 	app.get(`${MODULE}/income`, verifyTokenAndAdmin, async (req, res, next) => {
 		try {
 			const productId = req.query.pid;
+
 			const result = await order_controller.getOrdersIncome(productId);
 			res.send(result);
 		} catch (error) {

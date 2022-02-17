@@ -1,5 +1,4 @@
 const product_service = require('../services/product.service');
-
 const logger = require('../utils/logger');
 
 function createProduct(data) {

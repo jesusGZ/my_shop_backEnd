@@ -1,4 +1,4 @@
-module.exports = function errors(err, req, res, next) {
+module.exports = function errors(err, res) {
 	let error;
 
 	if (!err) {

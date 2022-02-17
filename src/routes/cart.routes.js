@@ -1,5 +1,5 @@
-const cart_controller = require('../controllers/cart.controller');
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('../utils/auth');
+const cart_controller = require('../controllers/cart.controller');
 
 const MODULE = 'carts';
 
@@ -49,7 +49,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.get(`${MODULE}/`, verifyTokenAndAdmin, async (req, res, next) => {
+	app.get(`${MODULE}/`, verifyTokenAndAdmin, async (res, next) => {
 		try {
 			const result = await cart_controller.getCarts();
 			res.send(result);

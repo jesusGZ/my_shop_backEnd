@@ -1,6 +1,8 @@
+const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('../utils/auth');
 const user_controller = require('../controllers/user.controller');
-const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('../utils/auth');
+
 const MODULE = 'users';
+
 module.exports = (app) => {
 	app.put(`${MODULE}/:id`, verifyTokenAndAuthorization, async (req, res, next) => {
 		try {
@@ -46,7 +48,7 @@ module.exports = (app) => {
 		}
 	});
 
-	app.get(`${MODULE}/stats`, verifyTokenAndAdmin, async (req, res, next) => {
+	app.get(`${MODULE}/stats`, verifyTokenAndAdmin, async (res, next) => {
 		try {
 			const result = await user_controller.getStats();
 			res.send(result);

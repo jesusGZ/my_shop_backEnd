@@ -1,17 +1,17 @@
 module.exports = (app) => {
-	app.post('*', (request, response) => {
+	app.post('*', (response) => {
 		response.status(404).json({ status: 'error', data: '', message: 'Ruta no definida' });
 	});
 
-	app.get('*', (request, response) => {
+	app.get('*', (response) => {
 		response.status(404).json({ status: 'error', data: '', message: 'Ruta no definida' });
 	});
 
-	app.put('*', (request, response) => {
+	app.put('*', (response) => {
 		response.status(404).json({ status: 'error', data: '', message: 'Ruta no definida' });
 	});
 
-	app.delete('*', (request, response) => {
+	app.delete('*', (response) => {
 		response.status(404).json({ status: 'error', data: '', message: 'Ruta no definida' });
 	});
 };

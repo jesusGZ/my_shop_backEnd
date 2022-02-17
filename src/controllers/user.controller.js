@@ -1,10 +1,10 @@
 const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
-const { SECURITY } = require('../core/config');
 
 const user_service = require('../services/user.service');
-
+const { SECURITY } = require('../core/config');
 const logger = require('../utils/logger');
+
 function createUser(data) {
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -25,6 +25,7 @@ function getStats() {
 			const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
 
 			const data = await user_service.getStats(lastYear);
+
 			resolve({ status: 'success', data: data, message: 'Petición realizada exitosamente.' });
 		} catch (error) {
 			logger.errorLogger('User Module', error.message);

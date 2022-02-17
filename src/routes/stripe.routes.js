@@ -1,5 +1,7 @@
 const stripe = require('stripe')(process.env.STRIPE_KEY);
+
 const MODULE = 'stripe';
+
 module.exports = (app) => {
 	app.post(`${MODULE}/payment`, (req, res) => {
 		stripe.charges.create(
